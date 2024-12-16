@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('tasks.app')
 
 @section('content')
 <div class="container">
@@ -7,7 +7,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>STT</th>
                 <th>Tiêu đề</th>
                 <th>Mô tả</th>
                 <th>Trạng thái</th>
@@ -15,9 +15,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($tasks as $task)
+            @php $i = 1; @endphp @foreach ($tasks as $task)
             <tr>
-                <td>{{ $task->id }}</td>
+                <td>{{ $i; }}</td>
                 <td>{{ $task->title }}</td>
                 <td>{{ $task->description }}</td>
                 <td>{{ $task->completed ? 'Hoàn thành' : 'Chưa hoàn thành' }}</td>
@@ -31,7 +31,7 @@
                     </form>
                 </td>
             </tr>
-            @endforeach
+            @php $i++; @endphp @endforeach
         </tbody>
     </table>
 </div>

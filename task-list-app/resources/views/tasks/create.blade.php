@@ -1,6 +1,4 @@
-create.blade.php
-
-@extends('layouts.app')
+@extends('tasks.app')
 
 @section('content')
 <div class="container">
