@@ -58,25 +58,30 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-        ]);
+        // Tìm Task theo ID
+        $task = Task::findOrFail($id);
 
-        $task->update($request->all());
+        // Cập nhật tất cả các thuộc tính từ form
+        $data = $request->except('_token', '_method'); // Loại bỏ các trường không cần thiết
+        $data['completed'] = $request->has('completed'); // Checkbox trả về true/false
 
-        return redirect()->route('tasks.index')->with('success', 'Task updated successfully.');
+        // Thực hiện cập nhật
+        $task->update($data);
+
+        // Quay lại trang danh sách với thông báo thành công
+        return redirect()->route('tasks.index')->with('success', 'Task được cập nhật thành công!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
+        $task = Task::findOrFail($id);
         $task->delete();
 
-        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully.');
+        return redirect()->route('tasks.index')->with('success', 'Task đã được xóa thành công.');
     }
 }

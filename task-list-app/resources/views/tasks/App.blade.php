@@ -21,9 +21,6 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('tasks.index') }}">Danh sách Task</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tasks.create') }}">Thêm mới</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -33,7 +30,8 @@
         @yield('content')
     </div>
 
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>
+
